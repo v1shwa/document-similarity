@@ -40,6 +40,6 @@ Calculate the similarity distance between documents using pre-trained word2vec m
 
 
 ### Requirements
-- Python 3.* only
+- Python 3 only
 - **_gensim_** : to load the word2vec model
 - **_numpy_**  : to calculate similarity scores
