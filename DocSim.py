@@ -19,7 +19,7 @@ class DocSim(object):
                 vec = self.w2v_model[word]
                 word_vecs.append(vec)
             except KeyError:
-                # Ignore if the word doesn't exist in the vocabulary
+                # Ignore, if the word doesn't exist in the vocabulary
                 pass
 
         # Assuming that document vector is the mean of all the word vectors
