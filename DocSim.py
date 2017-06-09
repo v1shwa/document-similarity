@@ -5,6 +5,7 @@ class DocSim(object):
         self.w2v_model = w2v_model
 
     def vectorize(self, doc):
+        """Identify the vector values for each word in the given document"""
         doc = doc.lower()
         words = [w for w in doc.split(" ") if w not in self.stopwords]
         word_vecs = []
@@ -23,12 +24,15 @@ class DocSim(object):
 
 
     def _cosine_sim(self, vecA, vecB):
+        """Find the cosine similarity distance between two vectors."""
         csim = np.dot(vecA, vecB) / (np.linalg.norm(vecA) * np.linalg.norm(vecB))
         if np.isnan(np.sum(csim)):
             return 0
         return csim
 
     def calculate_similarity(self, source_doc, target_docs=[], threshold=0):
+        """Calculates & returns similarity scores between given source document & all
+        the target documents."""
         if isinstance(target_docs, str):
             target_docs = [target_docs]
 
