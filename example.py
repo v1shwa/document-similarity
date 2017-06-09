@@ -5,10 +5,12 @@ from DocSim import DocSim
 # The model can be downloaded here: https://bit.ly/w2vgdrive (~1.4GB)
 # Feel free to use to your own model.
 googlenews_model_path = './data/GoogleNews-vectors-negative300.bin'
+stopwords_path = "./data/stopwords_en.txt"
 
 model = KeyedVectors.load_word2vec_format(googlenews_model_path, binary=True)
-
-ds = DocSim(model)
+with open(stopwords_path, 'r') as fh:
+    stopwords = fh.read().split(",")
+ds = DocSim(model,stopwords=stopwords)
 
 source_doc = "how to delete an invoice"
 target_docs = ['delete a invoice', 'how do i remove an invoice', "purge an invoice"]

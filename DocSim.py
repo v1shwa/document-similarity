@@ -1,14 +1,8 @@
 import numpy as np
 
 class DocSim(object):
-    def __init__(self, w2v_model , stopwords_path="./data/stopwords_en.txt"):
+    def __init__(self, w2v_model , stopwords=[]):
         self.w2v_model = w2v_model
-        self.stopwords = self._get_stopwords(stopwords_path)
-
-    def _get_stopwords(self, stopwords_path):
-        with open(stopwords_path, 'r') as fh:
-            text = fh.read()
-        return text.split(",")
 
     def vectorize(self, doc):
         doc = doc.lower()
