@@ -4,5 +4,4 @@ __pycache__/
 *$py.class
 *.so
 
-
 data/GoogleNews-vectors-negative300.bin

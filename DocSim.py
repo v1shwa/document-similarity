@@ -3,6 +3,7 @@ import numpy as np
 class DocSim(object):
     def __init__(self, w2v_model , stopwords=[]):
         self.w2v_model = w2v_model
+        self.stopwords = stopwords
 
     def vectorize(self, doc):
         """Identify the vector values for each word in the given document"""
