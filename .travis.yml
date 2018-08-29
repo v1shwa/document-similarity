@@ -3,4 +3,4 @@ python:
   - "3.6"
   - "3.7"
 install: "pip install gensim numpy"
-script: python example.py
+script: python -c "from DocSim import DocSim"
