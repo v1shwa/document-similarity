@@ -30,7 +30,12 @@ Calculate the similarity distance between documents using pre-trained word2vec m
 
   print(sim_scores)
   ```
-    
+- Output is as follows:
+  ```python
+    [ {'score': 0.99999994, 'doc': 'delete a invoice'}, 
+    {'score': 0.79869318, 'doc': 'how do i remove an invoice'}, 
+    {'score': 0.71488398, 'doc': 'purge an invoice'} ]
+    ```
 
 - _Note_: You can optionally pass a `threshold` argument to the  `calculate_similarity()` method to return only the target documents with similarity score above the threshold.
 
