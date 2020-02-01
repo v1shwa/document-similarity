@@ -1,4 +1,5 @@
 from gensim.models.keyedvectors import KeyedVectors
+from gensim.models.doc2vec import TaggedDocument
 from DocSim import DocSim
 
 # Using the pre-trained word2vec model trained using Google news corpus of 3 billion running words.
