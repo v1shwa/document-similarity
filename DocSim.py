@@ -1,5 +1,5 @@
 import numpy as np
-
+from gensim.models.doc2vec import TaggedDocument
 
 class DocSim:
     def __init__(self, w2v_model, stopwords=None):
@@ -31,23 +31,27 @@ class DocSim:
             return 0
         return csim
 
-    def calculate_similarity(self, source_doc, target_docs=None, threshold=0):
+    def calculate_similarity(self, source_doc, target_docs=None,topn=None,threshold=0):
         """Calculates & returns similarity scores between given source document & all
         the target documents."""
         if not target_docs:
             return []
-
+        
+        if not topn:
+            topn = len(target_docs)
+        
         if isinstance(target_docs, str):
             target_docs = [target_docs]
 
         source_vec = self.vectorize(source_doc)
+        tagged_data = [TaggedDocument(words=_d.lower(),tags=[str(i)]) for i, _d in enumerate(corpus)]
         results = []
-        for doc in target_docs:
-            target_vec = self.vectorize(doc)
+        for i in range(0,len(tagged_data)):
+            target_vec = self.vectorize(tagged_data[i].words)
             sim_score = self._cosine_sim(source_vec, target_vec)
             if sim_score > threshold:
-                results.append({"score": sim_score, "doc": doc})
+                results.append({"score": sim_score,"tag":tagged_data[i].tags,"doc":tagged_data[i].words})
             # Sort results by score in desc order
             results.sort(key=lambda k: k["score"], reverse=True)
 
-        return results
+        return results[0:topn]
