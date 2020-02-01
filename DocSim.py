@@ -1,5 +1,4 @@
 import numpy as np
-from gensim.models.doc2vec import TaggedDocument
 
 class DocSim:
     def __init__(self, w2v_model, stopwords=None):
