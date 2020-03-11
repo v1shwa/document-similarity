@@ -6,8 +6,12 @@ class DocSim:
         self.w2v_model = w2v_model
         self.stopwords = stopwords if stopwords is not None else []
 
-    def vectorize(self, doc):
-        """Identify the vector values for each word in the given document"""
+    def vectorize(self, doc: str) -> np.ndarray:
+        """
+        Identify the vector values for each word in the given document
+        :param doc:
+        :return:
+        """
         doc = doc.lower()
         words = [w for w in doc.split(" ") if w not in self.stopwords]
         word_vecs = []
